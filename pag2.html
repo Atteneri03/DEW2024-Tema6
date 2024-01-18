@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 1 pag 2</title>
+</head>
+<body>
+  <h1>Prueba de lectura de localstorage</h1>
+  <p>Nombre: <span id="name"></span></p>
+  <p>Edad: <span id="age"></span></p>
+
+  <script>
+    document.getElementById("name").textContent = localStorage.getItem("name") ? localStorage.getItem("name") : "Anónimo";
+    document.getElementById("age").textContent = localStorage.getItem("age") ? localStorage.getItem("age") : "Sin edad";
+
+  </script>
+</body>
+</html>

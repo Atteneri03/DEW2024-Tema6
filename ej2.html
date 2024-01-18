@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 2 Pag 1</title>
+</head>
+<body>
+  <h2>Pruebas con localstorage</h2>
+    <p>
+      Color: <input type="color" id="color" onchange="changeText()"><br><br>
+      Tamaño: <input type="range" id="width" min="8" max="30" onchange="changeText()"><br><br>
+      <input type="submit" value="guardar" onclick="saveFormat()">
+    </p>
+    <p id = "parragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. In voluptas debitis aspernatur totam cupiditate laudantium excepturi veritatis officiis vitae suscipit omnis autem harum odio, amet dolores obcaecati expedita. Non, quis.</p>
+
+    <script>
+      const inputColor = document.getElementById("color");
+      const inputSize = document.getElementById("width");
+      const parragraph = document.getElementById("parragraph");
+
+      function changeText(){
+        parragraph.style.color = inputColor.value;
+        parragraph.style.fontSize = inputSize.value + "pt";
+      }
+
+      function saveFormat(){
+        localStorage.color = inputColor.value;
+        localStorage.size = inputSize.value;
+
+      }
+
+      window.onload = () => {
+        if(localStorage.color && localStorage.size){
+          inputColor.value = localStorage.color;
+          inputSize.value = localStorage.size;
+          changeText();
+
+        }
+      }
+
+    </script>
+</body>
+</html>

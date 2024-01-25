@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Component</title>
+  <style>
+    mi-componente{
+      border: 1px solid black;
+      width: 200px;
+      float: left;
+      margin: 5px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Prueba de web component</h2>
+
+  <mi-componente data-title="Titulo 1" data-text="Esto es el texto"></mi-componente>
+  <mi-componente data-title="Titulo 2" data-text="Esto es fsffd"></mi-componente>
+  <mi-componente data-title="Titulo 3" data-text="Esto es fdfsfsf"></mi-componente>
+
+
+
+
+  <script>
+    class MiComponente extends HTMLElement{
+      #spanCount;
+
+      constructor(title, text) {
+        super();
+        this.title = title ?? this.dataset.title;
+        this.text = text ?? this.dataset.text;
+        let content = 
+        `<h1>${this.title}</h1> 
+        <h2><span>0</span></h2>
+        <p>${this.text}</p>`;
+        this.innerHTML = content;
+        this.#spanCount = this.querySelector("span");
+        this.#spanCount.addEventListener("click", () => this.increment());
+      }
+
+      increment(){
+        this.#spanCount.textContent++;
+      }
+
+      get counter(){
+        return parseInt(this.#spanCount.textContent);
+      }
+
+      set counter(value){
+        this.#spanCount.textContent = value;
+      }
+
+    }
+
+    customElements.define("mi-componente", MiComponente);
+
+    let articles = [
+      {tiltle: "1", text:"rfefffe"},
+      {tiltle: "2", text:"fdsfsgsg"},
+      {tiltle: "3", text:"ytyeytryt"},
+
+    ];
+
+    articles.forEach(article => {
+      let miComponente = new MiComponente(article.tiltle, article.text);
+      document.body.append(miComponente);
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <h2>Mi primer Vue</h2>
+  <div id="app">
+    <p>{{message}}</p>
+    <p>{{count}}</p>
+    <button @click="count++">{{count}}</button>
+  </div>
+
+  <script>
+    //import { createApp, ref } from 'vue'
+    const {createApp , ref} = Vue;
+
+    createApp({
+      data(){
+        return{
+          message: "Esto es otro mensaje",
+          count:0
+        }
+      }
+    }).mount("#app");
+  </script>
+</body>
+</html>
